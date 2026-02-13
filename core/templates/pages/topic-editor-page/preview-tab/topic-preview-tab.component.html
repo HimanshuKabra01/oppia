@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="activeTab === 'story'">
+    <div *ngIf="activeTab === 'story'" class="topic-preview-tab-content">
       <stories-list
                     [topicName]="topic.getName()"
                     [topicId]="topic.getId()"
@@ -50,7 +50,7 @@
                     [topicUrlFragment]="topicUrlFragment">
       </stories-list>
     </div>
-    <div *ngIf="activeTab === 'subtopic'">
+    <div *ngIf="activeTab === 'subtopic'" class="topic-preview-tab-content">
       <subtopics-list [classroomUrlFragment]="''"
                       [subtopicsList]="subtopics"
                       [topicId]="topic.getId()"
@@ -58,7 +58,7 @@
                       [topicUrlFragment]="''">
       </subtopics-list>
     </div>
-    <div  *ngIf="activeTab === 'practice'">
+    <div  *ngIf="activeTab === 'practice'" class="topic-preview-tab-content">
       <practice-tab *ngIf="isPracticeTabEnabled()" [subtopicsList]="subtopics"
                     [topicName]="topicName"
                     [topicUrlFragment]="topicUrlFragment"
@@ -87,7 +87,7 @@
   .topic-preview-nav {
     background-color: #00645c;
     box-shadow: 0 2px 8px #000000cf;
-    margin-bottom: 12px;
+    margin-bottom: 0;
   }
   .topic-preview-navbar-tabs {
     display: flex;
@@ -121,6 +121,27 @@
   }
   .topic-preview-parent .topic-preview-container mat-card {
     box-shadow: none;
+  }
+  .topic-preview-tab-content {
+    margin: 0;
+    padding: 0;
+  }
+  .topic-preview-parent /deep/ stories-list .oppia-stories-list-container .oppia-page-card,
+  .topic-preview-parent /deep/ practice-tab .oppia-practice-tab-container .oppia-page-card,
+  .topic-preview-parent /deep/ subtopics-list .oppia-page-card.oppia-long-text {
+    box-sizing: border-box;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+  }
+  .topic-preview-parent /deep/ stories-list .oppia-stories-list-container .oppia-page-card,
+  .topic-preview-parent /deep/ practice-tab .oppia-practice-tab-container .oppia-page-card {
+    padding-bottom: 30px !important;
+  }
+  .topic-preview-parent .topic-preview-tab-content > mat-card.oppia-page-card {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    width: 100% !important;
   }
   @media screen and (max-width: 1000px) {
     .topic-preview-container {
